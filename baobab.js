@@ -63,9 +63,49 @@
     };
     Baobab.prototype.evaluateBytecode = function(btc) {
         var myself = this;
-        btc.forEach(function(instruction) {
-            if (instruction[0] === "goto") {
-                myself.printScene(myself.game.scenes[instruction[1]]);
+        btc.forEach(function(ins) {
+            if (ins[0] === "goto") {
+                myself.printScene(myself.game.scenes[ins[1]]);
+                return true;
+            } else if (ins[0] === "random") {
+                return Math.random();
+            } else if (ins[0] === "number") {
+                return ins[1];
+            } else if (ins[0] === "string") {
+                return ins[1];
+            } else if (ins[0] === "boolean") {
+                return ins[1];
+            } else if (ins[0] === "+") {
+                return myself.evaluateBytecode(ins[1]) + myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "-") {
+                return myself.evaluateBytecode(ins[1]) - myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "*") {
+                return myself.evaluateBytecode(ins[1]) * myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "/") {
+                return myself.evaluateBytecode(ins[1]) / myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "and") {
+                return myself.evaluateBytecode(ins[1]) && myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "or") {
+                return myself.evaluateBytecode(ins[1]) || myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "not") {
+                return !myself.evaluateBytecode(ins[1]);
+            } else if (ins[0] === "reg") {
+                return myself.registers[ins[1]];
+            } else if (ins[0] === "set") {
+                myself.registers[ins[1]] = myself.evaluateBytecode(ins[2]);
+                return true;
+            } else if (ins[0] === "if") {
+                if (myself.evaluateBytecode(ins[1])) {
+                    return myself.evaluateBytecode(ins[2]);
+                } else {
+                    return myself.evaluateBytecode(ins[3]);
+                }
+            } else if (ins[0] === "while") {
+                while (myself.evaluateBytecode(ins[1])) {
+                    myself.evaluateBytecode(ins[2]);
+                }
+            } else {
+                console.error("I don't know how to " + ins[0]);
             }
         });
     };

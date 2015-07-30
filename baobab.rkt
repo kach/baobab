@@ -89,8 +89,7 @@
         (make-hasheq
             (list
                 (cons 'text text-)
-               ;(cons 'condition (compile-bytecode (quote condition-)))
-                (cons 'condition 123)
+                (cons 'condition (compile-bytecode (quote condition-)))
                 (cons 'actions (compile-bytecode (quote actions-))))))
 
 (define-syntax-rule
@@ -102,17 +101,18 @@
     (link*
         name
         #:text text
-        #:present-if true
+        #:present-if #t
         .
         actions))
 
-(define (compile-bytecode bytecode)
-    (map compile-instruction bytecode))
-
-(define (compile-instruction instruction)
-    (if (eq? (first instruction) 'goto)
-        (list "goto" (symbol->string (second instruction)))
-        (display "DEATH")))
+(define (compile-bytecode instruction)
+    (cond
+        [(symbol? instruction) (symbol->string instruction)]
+        [(number? instruction) (list "number" instruction)]
+        [(string? instruction) (list "string" instruction)]
+        [(boolean? instruction) (list "boolean" instruction)]
+        [(list?   instruction) (map compile-bytecode instruction)]))
+ 
 
 ; primitives:
 ;   goto-scene Scene
