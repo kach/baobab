@@ -18,7 +18,7 @@
     (link 'walk
         #:text
             "Walk the dinosaur."
-        [goto home])
+        [goto outside])
     (link* 'fire
         #:text
             "Set fire to the rain."
@@ -27,3 +27,16 @@
         
         [goto home] 
         ))
+
+(define-scene outside
+    #:title
+        "You are outside."
+    #:description
+        "You are outside."
+    (link 'a
+        #:text
+            "Go back inside"
+        [if (> (random) 0.5)
+            #t
+            [set is-raining? #t]]
+        [goto home]))

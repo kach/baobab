@@ -123,7 +123,9 @@
         }
     };
 
-    var test = {"description":"A test story.","start":"home","name":"Homewards.","version":"baobab-0.0.1","registers":{"is-raining?":false,"health":10,"owns-dinosaur?":true},"scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":["boolean",true],"actions":["begin",[["goto","home"]]]},{"text":"Set fire to the rain.","condition":["reg","is-raining?"],"actions":["begin",[["goto","home"]]]}]}},"author":"Art Vandelay"}
+    var test = {"author":"Art Vandelay","description":"A test story.","start":"home","name":"Homewards.","version":"baobab-0.0.1","registers":{"health":10,"owns-dinosaur?":true,"is-raining?":false},"scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":["boolean",true],"actions":["begin",[["goto","outside"]]]},{"text":"Set fire to the rain.","condition":["reg","is-raining?"],"actions":["begin",[["goto","home"]]]}]},"outside":{"description":"You are outside.","title":"You are outside.","links":[{"text":"Go back inside","condition":["boolean",true],"actions":["begin",[["if",[">",["random"],["number",0.5]],["boolean",true],["set","is-raining?",["boolean",true]]],["goto","home"]]]}]}}}
+
+
     ;
 
 
