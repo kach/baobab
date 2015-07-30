@@ -26,6 +26,7 @@
         define-register
         define-scene
         link
+        link*
 
         ; Required core utilities
         #%app #%datum #%top
@@ -79,7 +80,7 @@
             (quote name) name)))
 
 (define-syntax-rule
-    (link
+    (link*
         name-
         #:text text-
         #:present-if condition-
@@ -91,6 +92,19 @@
                ;(cons 'condition (compile-bytecode (quote condition-)))
                 (cons 'condition 123)
                 (cons 'actions (compile-bytecode (quote actions-))))))
+
+(define-syntax-rule
+    (link
+        name
+        #:text text
+        .
+        actions)
+    (link*
+        name
+        #:text text
+        #:present-if true
+        .
+        actions))
 
 (define (compile-bytecode bytecode)
     (map compile-instruction bytecode))
