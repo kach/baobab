@@ -6,8 +6,7 @@
     "start": "home",
     "scenes": {*
         name: {
-            "title": String,
-            "description": String,
+            "description": Code,
             "links": [
                 {
                     "text": String,

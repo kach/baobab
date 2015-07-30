@@ -11,10 +11,8 @@
 (define-register is-raining? #f)
 
 (define-scene home
-    #:title
-        "Your humble abode."
     #:description
-        "You are at home, sweet home."
+        [+ "You are at home, sweet home." " Yep."]
     (link 'walk
         #:text
             "Walk the dinosaur."
@@ -29,8 +27,6 @@
         ))
 
 (define-scene outside
-    #:title
-        "You are outside."
     #:description
         "You are outside."
     (link 'a
@@ -38,7 +34,7 @@
             "Go back inside"
         [if (> (random) 0.5)
             #t
-            [begin
+            [do
                 [[display "It gently begins to rain."]
                  [set is-raining? #t]]]]
         [goto home]))

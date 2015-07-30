@@ -63,7 +63,6 @@
 (define-syntax-rule
     (define-scene
         name
-        #:title title-
         #:description description-
         .
         links-)
@@ -71,8 +70,7 @@
         (define name
             (make-hasheq
                     (list
-                        (cons 'title title-)
-                        (cons 'description description-)
+                        (cons 'description (compile-bytecode (quote description-)))
                         (cons 'links (list . links-)))))
         
         (hash-set!
@@ -90,7 +88,7 @@
             (list
                 (cons 'text text-)
                 (cons 'condition (compile-bytecode (quote condition-)))
-                (cons 'actions (compile-bytecode (list 'begin (quote actions-)))))))
+                (cons 'actions (compile-bytecode (list 'do (quote actions-)))))))
 
 (define-syntax-rule
     (link
