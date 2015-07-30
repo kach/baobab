@@ -11,12 +11,12 @@ body {
 #header h1 {
   font-size: 1em;
   position:fixed;
-  top:0em;
+  top:1em;
 }
 
 div#main {
     max-width: 40em;
-    padding:0em 5em;
+    padding:0em 0em 0em 9em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -62,7 +62,7 @@ li {
 }
 
 #footer {
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: #333;
     position:fixed;
     bottom:0em;

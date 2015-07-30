@@ -18,8 +18,10 @@
         #:text
             "You are the forbidden offspring of woman and toad, 
             left to die in the river of your father."
-        [goto underwater]
-      ))
+        [begin
+         [[display "Your tail twitches as you slip backwards into the current"]
+          [set form "half-toad"] 
+          [goto underwater]]]))
 
 
 (define-scene underwater
@@ -30,4 +32,8 @@
     You slip below the surface of the river, thoughts and ambitions entering your mind.
 
     Why would they put you in the river?  You belong in the river, why did they cast you
-    into your home?")
+    into your home?"
+  (link 'upstream
+    #:text
+      "patrol the river upstream, towards the city"))
+
