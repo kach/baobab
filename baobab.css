@@ -1,7 +1,15 @@
 body {
     font-family: monospace;
+    font-size: 12pt;
     background-color: white;
     color: black;
+}
+
+#header {
+}
+
+#header h1 {
+    text-align: center;
 }
 
 div#main {

@@ -20,13 +20,12 @@
             "Walk the dinosaur."
         #:present-if
             [register-not-zero? owns-dinosaur?]
-       ;[display "Open the door! Get on the floor!"])
-        [1])
+        [goto home])
     (link 'fire
         #:text
             "Set fire to the rain."
         #:present-if
             [register-not-zero? is-raining?]
-        [display "Ouch!"]
-        [decrement-register! health]
-        [go-to-scene! emergency-room]))
+        
+        [goto home] 
+        ))
