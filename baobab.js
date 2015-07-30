@@ -1,26 +1,26 @@
 ~function() {
 
-    getHashLink = function(){
-      var hash = window.location["hash"];
-      if (hash){
-        var jreg = new RegExp("json\S*\=\S*([^\S]+)");
-        var res = jreg.exec(hash);
-        if (res){
-          return res[1];
+    var getHashLink = function(){
+        var hash = window.location["hash"];
+        if (hash){
+            var jreg = new RegExp("json\S*\=\S*([^\S]+)");
+            var res = jreg.exec(hash);
+            if (res){
+                return res[1];
+            }
         }
-      }
-      return false;
+        return false;
     };
 
-    getJSON = function(url, callback) {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200){
-          callback(JSON.parse(xmlhttp.responseText));
-        }                       
-      };
-     xmlhttp.open("GET",url,true);
-     xmlhttp.send();
+    var getJSON = function(url, callback) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                callback(JSON.parse(xmlhttp.responseText));
+            }                       
+        };
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
     };
 
     function Baobab(game, container) {
