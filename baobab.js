@@ -1,8 +1,15 @@
 ~function() {
-    function printScene(scene) {
+    function Baobab(game, container) {
+        this.game = game;
+        this.registers = game.registers;
+        this.stack = [];
+
+        this.container = container;
+    }
+    Baobab.prototype.printScene = function(scene) {
         var active = true;
 
-        var container = document.getElementById("main");
+        var container = this.container;
         var div  = document.createElement("div");
 
         var text = document.createElement("p");
@@ -31,14 +38,16 @@
         div.appendChild(text);
         div.appendChild(list);
         container.appendChild(div);
-    }
+    };
+    Baobab.prototype.start = function() {
+        this.printScene(this.game.scenes[this.game.start]);
+    };
 
     var test = {"name":"Homewards.","version":"baobab-0.0.1","scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":0,"actions":0},{"text":"Set fire to the rain.","condition":0,"actions":0}]}},"author":"Art Vandelay","description":"A test story.","start":"home","registers":{"health":10,"owns-dinosaur?":true,"is-raining?":false}}
 
 
     window.addEventListener("load", function() {
-        printScene(
-            test.scenes[test.start]
-        );
+        var b = new Baobab(test, document.getElementById("main"));
+        b.start();
     }, false);
 }();
