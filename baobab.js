@@ -7,6 +7,7 @@
         this.container = container;
     }
     Baobab.prototype.printScene = function(scene) {
+        var myself = this;
         var active = true;
 
         var container = this.container;
@@ -28,6 +29,8 @@
                     active = false;
                     div.className += " inactive";
                     a.className += " chosen";
+
+                    myself.evaluateBytecode(link.actions);
                 }
             }, false);
 
@@ -40,10 +43,21 @@
         container.appendChild(div);
     };
     Baobab.prototype.start = function() {
+        while (this.container.firstChild) {
+            this.container.removeChild(this.container.firstChild);
+        }
         this.printScene(this.game.scenes[this.game.start]);
     };
+    Baobab.prototype.evaluateBytecode = function(btc) {
+        var myself = this;
+        btc.forEach(function(instruction) {
+            if (instruction[0] === "goto") {
+                myself.printScene(myself.game.scenes[instruction[1]]);
+            }
+        });
+    };
 
-    var test = {"name":"Homewards.","version":"baobab-0.0.1","scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":0,"actions":0},{"text":"Set fire to the rain.","condition":0,"actions":0}]}},"author":"Art Vandelay","description":"A test story.","start":"home","registers":{"health":10,"owns-dinosaur?":true,"is-raining?":false}}
+    var test = {"registers":{"is-raining?":false,"health":10,"owns-dinosaur?":true},"name":"Homewards.","version":"baobab-0.0.1","scenes":{"home":{"title":"Your humble abode.","links":[{"actions":[["goto","home"]],"text":"Walk the dinosaur.","condition":123},{"actions":[["goto","home"]],"text":"Set fire to the rain.","condition":123}],"description":"You are at home, sweet home."}},"author":"Art Vandelay","description":"A test story.","start":"home"}
 
 
     window.addEventListener("load", function() {

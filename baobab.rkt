@@ -88,7 +88,35 @@
         (make-hasheq
             (list
                 (cons 'text text-)
-                (cons 'condition (compile-bytecode (quote condition-)))
+               ;(cons 'condition (compile-bytecode (quote condition-)))
+                (cons 'condition 123)
                 (cons 'actions (compile-bytecode (quote actions-))))))
 
-(define (compile-bytecode . a) 0) ; TODO
+(define (compile-bytecode bytecode)
+    (map compile-instruction bytecode))
+
+(define (compile-instruction instruction)
+    (if (eq? (first instruction) 'goto)
+        (list "goto" (symbol->string (second instruction)))
+        (display "DEATH")))
+
+; primitives:
+;   goto-scene Scene
+;   end-game
+;   clear
+;   section-break
+;   display String
+;   if Boolean Bytecode Bytecode
+;   while Boolean Bytecode
+;   wait Number
+;   + - * / and or not
+
+#|
+[section-break]
+[display "Ouch! That hurt."]
+[set! health (- health (random))]
+[if (< health 0)
+    [(goto Hospital)]
+    [(display "That could have been dangerous...")
+     (goto House)]]
+|#
