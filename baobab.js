@@ -1,4 +1,30 @@
 ~function() {
+
+    getHashLink = function(){
+      var hash = window.location["hash"];
+      if (hash){
+        var jreg = new RegExp("json\S*\=\S*([^\S]+)");
+        var res = jreg.exec(hash);
+        if (res){
+          return res[1];
+        }
+      }
+      return false;
+    };
+
+    getJSON = function(url, callback) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+          callback(xmlhttp.responseText);
+        } else {
+          callback(false);
+        }                       
+      };
+     xmlhttp.open("GET",url,true);
+     xmlhttp.send();
+    };
+
     function Baobab(game, container) {
         this.game = game;
         this.registers = game.registers;
@@ -133,9 +159,17 @@
 
     ;
 
-
-    window.addEventListener("load", function() {
+    var main = function(source){
         var b = new Baobab(test, document.getElementById("main"));
         b.start();
+    };
+
+    window.addEventListener("load", function() {
+        var link = getHashLink();
+        if (link){
+            getJSON(link, main);
+        } else {
+            main(test);
+        }
     }, false);
 }();
