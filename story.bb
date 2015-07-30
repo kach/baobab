@@ -38,7 +38,7 @@
             "Go back inside"
         [if (> (random) 0.5)
             #t
-            [begin
+            [do
                 [[display "It gently begins to rain."]
                  [set is-raining? #t]]]]
         [goto home]))

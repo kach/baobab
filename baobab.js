@@ -131,7 +131,7 @@
         } else if (ins[0] === "set") {
             myself.registers[ins[1]] = myself.evaluateBytecode(ins[2]);
             return true;
-        } else if (ins[0] === "begin") {
+        } else if (ins[0] === "do") {
             var a = true;
             ins[1].forEach(function(i) {
                 console.log("COWS", i);
