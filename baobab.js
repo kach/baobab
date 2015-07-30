@@ -89,6 +89,12 @@
                 return myself.evaluateBytecode(ins[1]) || myself.evaluateBytecode(ins[2]);
             } else if (ins[0] === "not") {
                 return !myself.evaluateBytecode(ins[1]);
+            } else if (ins[0] === "<") {
+                return myself.evaluateBytecode(ins[1]) < myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === "=") {
+                return myself.evaluateBytecode(ins[1]) = myself.evaluateBytecode(ins[2]);
+            } else if (ins[0] === ">") {
+                return myself.evaluateBytecode(ins[1]) > myself.evaluateBytecode(ins[2]);
             } else if (ins[0] === "reg") {
                 return myself.registers[ins[1]];
             } else if (ins[0] === "set") {

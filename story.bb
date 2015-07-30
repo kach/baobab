@@ -23,7 +23,7 @@
         #:text
             "Set fire to the rain."
         #:present-if
-            [register-not-zero? is-raining?]
+            [reg is-raining?]
         
         [goto home] 
         ))
