@@ -8,10 +8,12 @@
     }
     Baobab.prototype.printScene = function(scene) {
         var myself = this;
+        var uid = Date.now();
         var active = true;
 
         var container = this.container;
         var div  = document.createElement("div");
+        div.id = uid;
 
         var text = document.createElement("p");
         text.textContent = scene.description;
@@ -21,7 +23,7 @@
         scene.links.forEach(function(link) {
             var li = document.createElement("li");
             var a  = document.createElement("a");
-            a.href = "#";
+            a.href = "#" + uid;
             a.textContent = link.text;
 
             a.addEventListener("click", function(moi) {
@@ -41,11 +43,22 @@
         div.appendChild(text);
         div.appendChild(list);
         container.appendChild(div);
+        window.scrollTo(0, document.body.scrollHeight);
     };
     Baobab.prototype.start = function() {
         while (this.container.firstChild) {
             this.container.removeChild(this.container.firstChild);
         }
+        document.title = this.game.name + " - baobab";
+
+        var title = document.createElement("h1");
+        title.textContent = this.game.name;
+        var author = document.createElement("h2");
+        author.textContent = this.game.author;
+        
+        this.container.appendChild(title);
+        this.container.appendChild(author);
+
         this.printScene(this.game.scenes[this.game.start]);
     };
     Baobab.prototype.evaluateBytecode = function(btc) {

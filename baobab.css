@@ -18,6 +18,15 @@ div#main {
     margin-right: auto;
 }
 
+#main h1 {
+    font-size: 2em;
+    font-weight: 100;
+}
+#main h2 {
+    font-size: 1em;
+    margin-bottom: 5em;
+}
+
 a, a:visited {
     color: #2e7c9b;
 }
@@ -34,6 +43,7 @@ a:hover {
 
 .inactive a:hover {
     color: #64828b;
+    cursor: default;
 }
 
 a.chosen {
