@@ -1,3 +1,8 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: monospace;
     font-size: 12pt;
@@ -6,6 +11,7 @@ body {
 }
 
 #header {
+    padding: 1em;
 }
 
 #header h1 {
@@ -19,6 +25,7 @@ div#main {
     padding:0em 5em;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 3em;
 }
 
 #main h1 {
@@ -62,8 +69,16 @@ li {
 }
 
 #footer {
+    height: 3em;
+    border-top: 1px #eee solid;
     font-size: 0.8em;
     color: #333;
     position:fixed;
     bottom:0em;
+
+    margin: 0;
+    padding-left: 1em;
+    width: 100%;
+
+    background-color: white;
 }
