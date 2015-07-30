@@ -16,5 +16,18 @@
         floating among the reeds in the chilly muck"
     (link 'half-toad
         #:text
-            "You are the forbidden offspring of woman and toad, left to die in the river of your father."
+            "You are the forbidden offspring of woman and toad, 
+            left to die in the river of your father."
+        [goto underwater]
       ))
+
+
+(define-scene underwater
+  #:title
+    "The fridgid depths of the river"
+  #:description
+    "But you don't die, do you?
+    You slip below the surface of the river, thoughts and ambitions entering your mind.
+
+    Why would they put you in the river?  You belong in the river, why did they cast you
+    into your home?")
