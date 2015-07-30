@@ -1,0 +1,37 @@
+body {
+    font-family: monospace;
+    background-color: white;
+    color: black;
+}
+
+div#main {
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a, a:visited {
+    color: #2e7c9b;
+}
+
+a:hover {
+    color: #3495b2;
+}
+
+
+.inactive a {
+    text-decoration: none;
+    color: #64828b;
+}
+
+.inactive a:hover {
+    color: #64828b;
+}
+
+a.chosen {
+    text-decoration: underline;
+}
+
+li {
+    list-style-type: none;
+}

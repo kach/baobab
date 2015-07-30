@@ -1,0 +1,23 @@
+{
+    "name": String,
+    "author": String,
+    "description": String,
+    "version": Semvar,
+    "start": "home",
+    "scenes": {*
+        name: {
+            "title": String,
+            "description": String,
+            "links": [
+                {
+                    "text": String,
+                    "condition": Code,
+                    "actions": Code
+                }
+            ]
+        }
+    },
+    "registers": {*
+        Key: Value
+    }
+}
