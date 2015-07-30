@@ -18,12 +18,27 @@
     (link 'walk
         #:text
             "Walk the dinosaur."
-        [goto home])
+        [goto outside])
     (link* 'fire
         #:text
             "Set fire to the rain."
         #:present-if
-            [register-not-zero? is-raining?]
+            [reg is-raining?]
         
         [goto home] 
         ))
+
+(define-scene outside
+    #:title
+        "You are outside."
+    #:description
+        "You are outside."
+    (link 'a
+        #:text
+            "Go back inside"
+        [if (> (random) 0.5)
+            #t
+            [begin
+                [[display "It gently begins to rain."]
+                 [set is-raining? #t]]]]
+        [goto home]))
