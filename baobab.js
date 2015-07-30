@@ -69,6 +69,11 @@
         if (ins[0] === "goto") {
             myself.printScene(myself.game.scenes[ins[1]]);
             return true;
+        } else if (ins[0] === "display") {
+            var p = document.createElement("p");
+            p.textContent = myself.evaluateBytecode(ins[1]);
+            myself.container.appendChild(p);
+            return true;
         } else if (ins[0] === "random") {
             return Math.random();
         } else if (ins[0] === "number") {
@@ -105,6 +110,7 @@
         } else if (ins[0] === "begin") {
             var a = true;
             ins[1].forEach(function(i) {
+                console.log("COWS", i);
                 a = myself.evaluateBytecode(i); 
             });
             return a;
@@ -123,8 +129,7 @@
         }
     };
 
-    var test = {"author":"Art Vandelay","description":"A test story.","start":"home","name":"Homewards.","version":"baobab-0.0.1","registers":{"health":10,"owns-dinosaur?":true,"is-raining?":false},"scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":["boolean",true],"actions":["begin",[["goto","outside"]]]},{"text":"Set fire to the rain.","condition":["reg","is-raining?"],"actions":["begin",[["goto","home"]]]}]},"outside":{"description":"You are outside.","title":"You are outside.","links":[{"text":"Go back inside","condition":["boolean",true],"actions":["begin",[["if",[">",["random"],["number",0.5]],["boolean",true],["set","is-raining?",["boolean",true]]],["goto","home"]]]}]}}}
-
+    var test = {"author":"Art Vandelay","description":"A test story.","start":"home","name":"Homewards.","version":"baobab-0.0.1","registers":{"health":10,"owns-dinosaur?":true,"is-raining?":false},"scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":["boolean",true],"actions":["begin",[["goto","outside"]]]},{"text":"Set fire to the rain.","condition":["reg","is-raining?"],"actions":["begin",[["goto","home"]]]}]},"outside":{"description":"You are outside.","title":"You are outside.","links":[{"text":"Go back inside","condition":["boolean",true],"actions":["begin",[["if",[">",["random"],["number",0.5]],["boolean",true],["begin",[["display",["string","It gently begins to rain."]],["set","is-raining?",["boolean",true]]]]],["goto","home"]]]}]}}}
 
     ;
 
