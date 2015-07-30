@@ -96,7 +96,7 @@
         } else if (ins[0] === "display") {
             var p = document.createElement("p");
             p.textContent = myself.evaluateBytecode(ins[1]);
-            myself.container.appendChild(p);
+            myself.container.lastChild.appendChild(p);
             return true;
         } else if (ins[0] === "random") {
             return Math.random();
