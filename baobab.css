@@ -36,6 +36,10 @@ a:hover {
 }
 
 
+.inactive {
+    color: #888;
+}
+
 .inactive a {
     text-decoration: none;
     color: #64828b;
@@ -52,4 +56,10 @@ a.chosen {
 
 li {
     list-style-type: none;
+}
+
+#footer {
+    font-size: 0.8em;
+    color: #333;
+    text-align: center;
 }
