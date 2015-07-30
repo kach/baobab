@@ -40,7 +40,7 @@
         div.id = uid;
 
         var text = document.createElement("p");
-        text.textContent = scene.description;
+        text.textContent = myself.evaluateBytecode(scene.description);
         var list = document.createElement("ul");
 
         var links = [];
@@ -153,7 +153,8 @@
         }
     };
 
-    var test = {"author":"Art Vandelay","description":"A test story.","start":"home","name":"Homewards.","version":"baobab-0.0.1","registers":{"health":10,"owns-dinosaur?":true,"is-raining?":false},"scenes":{"home":{"description":"You are at home, sweet home.","title":"Your humble abode.","links":[{"text":"Walk the dinosaur.","condition":["boolean",true],"actions":["do",[["goto","outside"]]]},{"text":"Set fire to the rain.","condition":["reg","is-raining?"],"actions":["do",[["goto","home"]]]}]},"outside":{"description":"You are outside.","title":"You are outside.","links":[{"text":"Go back inside","condition":["boolean",true],"actions":["do",[["if",[">",["random"],["number",0.5]],["boolean",true],["do",[["display",["string","It gently begins to rain."]],["set","is-raining?",["boolean",true]]]]],["goto","home"]]]}]}}}
+    var test = {"author":"Art Vandelay","description":"A test story.","start":"home","name":"Homewards.","scenes":{"home":{"description":["+",["string","You are at home, sweet home."],["string"," Yep."]],"links":[{"text":"Walk the dinosaur.","condition":["boolean",true],"actions":["do",[["goto","outside"]]]},{"text":"Set fire to the rain.","condition":["reg","is-raining?"],"actions":["do",[["goto","home"]]]}]},"outside":{"description":["string","You are outside."],"links":[{"text":"Go back inside","condition":["boolean",true],"actions":["do",[["if",[">",["random"],["number",0.5]],["boolean",true],["do",[["display",["string","It gently begins to rain."]],["set","is-raining?",["boolean",true]]]]],["goto","home"]]]}]}},"version":"baobab-0.0.1","registers":{"is-raining?":false,"health":10,"owns-dinosaur?":true}}
+
 
 
     ;
