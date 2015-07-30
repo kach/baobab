@@ -9,11 +9,14 @@ body {
 }
 
 #header h1 {
-    text-align: center;
+  font-size: 1em;
+  position:fixed;
+  top:0em;
 }
 
 div#main {
     max-width: 40em;
+    padding:0em 5em;
     margin-left: auto;
     margin-right: auto;
 }
@@ -61,5 +64,6 @@ li {
 #footer {
     font-size: 0.8em;
     color: #333;
-    text-align: center;
+    position:fixed;
+    bottom:0em;
 }
