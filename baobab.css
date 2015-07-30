@@ -66,6 +66,7 @@ a.chosen {
 
 li {
     list-style-type: none;
+    margin-bottom: 1em;
 }
 
 #footer {
