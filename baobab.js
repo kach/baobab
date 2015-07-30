@@ -160,7 +160,7 @@
     ;
 
     var main = function(source){
-        var b = new Baobab(test, document.getElementById("main"));
+        var b = new Baobab(source, document.getElementById("main"));
         b.start();
     };
 
