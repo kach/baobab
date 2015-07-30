@@ -18,10 +18,8 @@
     (link 'walk
         #:text
             "Walk the dinosaur."
-        #:present-if
-            [register-not-zero? owns-dinosaur?]
         [goto home])
-    (link 'fire
+    (link* 'fire
         #:text
             "Set fire to the rain."
         #:present-if
