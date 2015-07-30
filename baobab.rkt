@@ -90,7 +90,7 @@
             (list
                 (cons 'text text-)
                 (cons 'condition (compile-bytecode (quote condition-)))
-                (cons 'actions (compile-bytecode (quote actions-))))))
+                (cons 'actions (compile-bytecode (list 'begin (quote actions-)))))))
 
 (define-syntax-rule
     (link
