@@ -40,7 +40,7 @@
         div.id = uid;
 
         var text = document.createElement("p");
-        text.textContent = myself.evaluateBytecode(scene.description);
+        text.innerHTML = myself.evaluateBytecode(scene.description);
         var list = document.createElement("ul");
 
         var links = [];
@@ -49,7 +49,7 @@
                 var li = document.createElement("li");
                 var a  = document.createElement("a");
                 a.href = "#" + uid;
-                a.textContent = link.text;
+                a.innerHTML = link.text;
 
                 a.addEventListener("click", function(moi) {
                     if (active) {
@@ -95,7 +95,7 @@
             return true;
         } else if (ins[0] === "display") {
             var p = document.createElement("p");
-            p.textContent = myself.evaluateBytecode(ins[1]);
+            p.innerHTML = myself.evaluateBytecode(ins[1]);
             myself.container.appendChild(p);
             return true;
         } else if (ins[0] === "random") {
